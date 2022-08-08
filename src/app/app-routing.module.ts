@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PhotosComponent } from './features/photos/photos/photos.component';
+import { SinglePhotoComponent } from './features/photos/single-photo/single-photo.component';
 
 export const appRoutes: Routes = [
   {
@@ -8,6 +9,11 @@ export const appRoutes: Routes = [
     component: PhotosComponent,
     pathMatch: 'full',
     title: 'Photos',
+  },
+  {
+    path: 'photos/:id',
+    component: SinglePhotoComponent,
+    title: 'Photo',
   },
   {
     path: 'favorites',
