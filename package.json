@@ -8,7 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepare": "husky install",
+    "lint-staged": "npx lint-staged"
   },
   "private": true,
   "dependencies": {
@@ -40,6 +42,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-rxjs": "^5.0.2",
+    "husky": "^8.0.1",
     "jasmine-core": "~4.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
@@ -55,8 +58,8 @@
       "npm run format"
     ],
     "*.{html,ts}": [
-      "eslint",
-      "npm run format"
+      "npm run format",
+      "eslint"
     ]
   }
 }
