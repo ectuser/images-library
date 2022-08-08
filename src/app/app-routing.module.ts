@@ -6,10 +6,13 @@ const routes: Routes = [
   {
     path: '',
     component: PhotosComponent,
+    pathMatch: 'full',
+    title: 'Photos',
   },
   {
     path: 'favorites',
     loadChildren: () => import('./features/favorites/favorites.module').then((m) => m.FavoritesModule),
+    title: 'Favorites',
   },
 ];
 
