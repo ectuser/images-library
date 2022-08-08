@@ -5,4 +5,8 @@ export const environment: Config = {
   apiEndpoints: {
     photos: 'https://dog.ceo/api/breeds/image',
   },
+  features: {
+    loadPhotos: true,
+    logging: false,
+  },
 };
