@@ -1,0 +1,25 @@
+<mat-toolbar>
+  <nav>
+    <a
+      mat-button
+      aria-label="A link to Photos page"
+      routerLink=""
+      routerLinkActive
+      [routerLinkActiveOptions]="{exact:true}"
+      #rlaHome="routerLinkActive"
+      [color]="rlaHome.isActive ? 'primary' : 'basic'"
+    >
+      Photos
+    </a>
+    <a
+      mat-button
+      aria-label="A link to Favorites page"
+      routerLink="/favorites"
+      routerLinkActive
+      #rlaFavorites="routerLinkActive"
+      [color]="rlaFavorites.isActive ? 'primary' : 'basic'"
+    >
+      Favorites
+    </a>
+  </nav>
+</mat-toolbar>
