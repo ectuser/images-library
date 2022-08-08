@@ -2,13 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material.module';
 import { LayoutComponent } from './layout/layout.component';
-
-const modules = [MaterialModule];
-const components = [LayoutComponent];
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [...components],
-  imports: [CommonModule, ...modules],
-  exports: [...modules, ...components],
+  declarations: [LayoutComponent],
+  imports: [CommonModule, MaterialModule, RouterModule],
+  exports: [LayoutComponent],
 })
 export class CoreModule {}
