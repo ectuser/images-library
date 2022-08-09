@@ -1,1 +1,3 @@
-<div></div>
+<section class="images">
+  <app-photo-card *ngFor="let photo of (photos$ | async)" [imageUrl]="photo"></app-photo-card>
+</section>
