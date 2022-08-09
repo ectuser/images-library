@@ -1,15 +1,17 @@
-import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
-import { combineLatest, map, Observable, Subject, takeUntil } from 'rxjs';
+import { ChangeDetectionStrategy, Component, Self } from '@angular/core';
+import { combineLatest, map, Observable, takeUntil } from 'rxjs';
 import { FavoritesService } from '../../favorites/favorites.service';
 import { PhotoWithStatus } from '../photo.model';
 import { PhotosService } from '../photos.service';
+import { DestroyService } from '../../../core/services/destroy.service';
 
 @Component({
   templateUrl: './photos.component.html',
   styleUrls: ['./photos.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [DestroyService],
 })
-export class PhotosComponent implements OnDestroy {
+export class PhotosComponent {
   photos$: Observable<PhotoWithStatus[]> = combineLatest([this.photosService.images$, this.favoritesService.favorites$]).pipe(
     map(([images, favorites]) => {
       return images.map((image) => {
@@ -22,19 +24,12 @@ export class PhotosComponent implements OnDestroy {
   );
   isLoading$ = this.photosService.loading$;
 
-  private alive$ = new Subject();
-
-  constructor(private photosService: PhotosService, private favoritesService: FavoritesService) {}
-
-  ngOnDestroy(): void {
-    this.alive$.next(null);
-    this.alive$.complete();
-  }
+  constructor(private photosService: PhotosService, private favoritesService: FavoritesService, @Self() private destroy$: DestroyService) {}
 
   loadImages(): void {
     console.log('load');
 
-    this.photosService.loadImages().pipe(takeUntil(this.alive$)).subscribe();
+    this.photosService.loadImages().pipe(takeUntil(this.destroy$)).subscribe();
   }
 
   addToFavorites(url: string): void {
