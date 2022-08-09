@@ -1,3 +1,8 @@
-<section class="images">
-  <app-photo-card *ngFor="let photo of (photos$ | async)" [imageUrl]="photo"></app-photo-card>
-</section>
+<app-infinite-scroll (scrolled)="loadImages()">
+  <section class="images">
+    <app-photo-card *ngFor="let photo of (photos$ | async)" [imageUrl]="photo"></app-photo-card>
+  </section>
+  <div class="spinner-container">
+    <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
+  </div>
+</app-infinite-scroll>

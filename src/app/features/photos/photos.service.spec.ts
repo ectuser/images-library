@@ -48,11 +48,11 @@ describe('PhotosService', () => {
         done();
       });
     });
-    it('should set data to beh subject', (done) => {
-      service['imagesSubject$'] = new BehaviorSubject<string[]>([]);
+    it('should add data to beh subject', (done) => {
+      service['imagesSubject$'] = new BehaviorSubject<string[]>(['zero']);
 
       service.loadImages().subscribe(() => {
-        expect(service['imagesSubject$'].value).toEqual(['one', 'two']);
+        expect(service['imagesSubject$'].value).toEqual(['zero', 'one', 'two']);
 
         done();
       });
