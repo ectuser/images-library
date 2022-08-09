@@ -8,7 +8,11 @@ A small application to add favorite photos.
 
 ## Demo
 
-![Demo](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+
+
+https://user-images.githubusercontent.com/28193050/183779674-433313c9-925c-4839-bb21-9994d605ff5b.mp4
+
+
 
 ## Links:
 
