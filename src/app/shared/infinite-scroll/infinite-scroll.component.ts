@@ -27,7 +27,9 @@ export class InfiniteScrollComponent implements OnDestroy, AfterViewInit {
     };
 
     this.observer = new IntersectionObserver(([entry]) => {
-      entry.isIntersecting && this.scrolled.emit();
+      if (entry.isIntersecting) {
+        this.scrolled.emit();
+      }
     }, options);
 
     this.observer.observe(this.anchorToReach.nativeElement);
