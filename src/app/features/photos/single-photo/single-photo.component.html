@@ -1,1 +1,7 @@
-<p>single-photo works!</p>
+<div class="image-container">
+  <img [src]="url$ | async" alt="A photo" />
+</div>
+
+<div class="button-container">
+  <button *ngIf="isFavorite$ | async" mat-raised-button (click)="removeFromFavorites()">Remove from favorites</button>
+</div>

@@ -19,6 +19,13 @@ export class FavoritesService {
   }
 
   addFavorite(url: string): void {
-    this.favoritesSubject$.next([...this.favoritesSubject$.value, url]);
+    if (this.favoritesSubject$.value.indexOf(url) === -1) {
+      this.favoritesSubject$.next([...this.favoritesSubject$.value, url]);
+    }
+  }
+
+  removeFavorite(url: string): void {
+    const filteredFavorite = this.favoritesSubject$.value.filter((el) => el !== url);
+    this.favoritesSubject$.next(filteredFavorite);
   }
 }

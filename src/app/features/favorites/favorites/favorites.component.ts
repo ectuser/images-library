@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { PhotoWithStatus } from '../../photos/photo.model';
 import { FavoritesService } from '../favorites.service';
@@ -15,5 +16,9 @@ export class FavoritesComponent {
     })
   );
 
-  constructor(private favoritesService: FavoritesService) {}
+  constructor(private favoritesService: FavoritesService, private router: Router) {}
+
+  async goToImage(url: string): Promise<void> {
+    await this.router.navigate(['/photos', url]);
+  }
 }
