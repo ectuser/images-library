@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { MaterialModule } from 'src/app/material.module';
+import { MaterialModule } from '../../material.module';
 
 @Component({
   selector: 'app-photo-card',

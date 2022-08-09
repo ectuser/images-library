@@ -1,10 +1,10 @@
-import { fakeAsync, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { Observable, of } from 'rxjs';
 import { LoggerService } from '../services/logger.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 import { HandleErrorInterceptor } from './handle-error.interceptor';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 class LoggerServiceMock {
   error(message: unknown): Observable<unknown> {
@@ -14,31 +14,65 @@ class LoggerServiceMock {
 
 describe('HandleErrorInterceptor', () => {
   let httpMock: HttpTestingController;
-  let interceptor: HandleErrorInterceptor;
+  let loggerService: LoggerService;
   let httpClient: HttpClient;
 
   beforeEach(() => TestBed.configureTestingModule({
     imports: [HttpClientTestingModule],
-    providers: [HandleErrorInterceptor, { provide: LoggerService, useClass: LoggerServiceMock }]
+    providers: [
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: HandleErrorInterceptor,
+        multi: true,
+      },
+      { provide: LoggerService, useClass: LoggerServiceMock },
+    ]
   }));
 
   beforeEach(() => {
     httpMock = TestBed.inject(HttpTestingController);
-    interceptor = TestBed.inject(HandleErrorInterceptor);
     httpClient = TestBed.inject(HttpClient);
+    loggerService = TestBed.inject(LoggerService);
   });
 
-  it('should be created', () => {
-    expect(interceptor).toBeTruthy();
+  afterEach(() => {
+    httpMock.verify();
   });
 
-  it('should call loggerService.error in case of error', fakeAsync(() => {
-    httpClient.get('test-url').subscribe();
+  it('should call loggerService.error if there is a error', (done) => {
+    const loggerSpy = jest.spyOn(loggerService, 'error');
 
-    const request = httpMock.expectOne('test-url');
-    const response = new HttpErrorResponse({url: 'test-url', error: 'Req err'});
-    request.error(new ProgressEvent('error'), response);
+    httpClient.get('/log-test-url').subscribe(
+      {
+        error: () => {
+          expect(loggerSpy).toHaveBeenCalledTimes(1);
+          expect(loggerSpy).toHaveBeenCalledWith('Request to \"/log-test-url\" failed')
+          done();
+        }
+      }
+    )
 
-    expect(true).toBe(true);
-  }));
+    const req = httpMock.expectOne('/log-test-url');
+    expect(req.request.method).toBe('GET');
+    const errorResponse = new HttpErrorResponse({
+      error: '404 error',
+      status: 404,
+      statusText: 'Not Found'
+    });
+    req.error(new ProgressEvent('123'), errorResponse);
+  });
+
+  it('should call loggerService.error in case of error', (done) => {
+    const loggerSpy = jest.spyOn(loggerService, 'error');
+
+    httpClient.get('/log-test-url').subscribe(() => {
+      expect(loggerSpy).toHaveBeenCalledTimes(0);
+
+      done();
+    })
+
+    const req = httpMock.expectOne('/log-test-url');
+    expect(req.request.method).toBe('GET');
+    req.flush({});
+  });
 });
