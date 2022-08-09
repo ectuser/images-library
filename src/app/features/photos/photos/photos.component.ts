@@ -12,8 +12,6 @@ import { PhotosService } from '../photos.service';
 export class PhotosComponent implements OnDestroy {
   photos$: Observable<PhotoWithStatus[]> = combineLatest([this.photosService.images$, this.favoritesService.favorites$]).pipe(
     map(([images, favorites]) => {
-      console.log('run');
-
       return images.map((image) => {
         return {
           url: image,
