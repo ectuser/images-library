@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PhotosComponent } from './photos/photos.component';
 import { SinglePhotoComponent } from './single-photo/single-photo.component';
-import { MaterialModule } from 'src/app/material.module';
+import { MaterialModule } from '../../material.module';
 import { InfiniteScrollComponent } from '../../shared/infinite-scroll/infinite-scroll.component';
 import { ImagesSectionComponent } from '../../shared/images-section/images-section.component';
 
