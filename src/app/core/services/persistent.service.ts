@@ -24,12 +24,7 @@ export class PersistentService {
     }
 
     const subscription = obs$.subscribe((value) => {
-      let strVal: string;
-      if (typeof value !== 'string') {
-        strVal = JSON.stringify(value);
-      } else {
-        strVal = value;
-      }
+      const strVal = typeof value !== 'string' ? JSON.stringify(value) : value;
       this.localStorageService.set(key, strVal);
     });
 
