@@ -1,1 +1,1 @@
-<app-images-section *ngIf="images$ | async as images" [photos]="images"></app-images-section>
+<app-images-section *ngIf="images$ | async as images" [photos]="images" (imageClicked)="goToImage($event)"></app-images-section>

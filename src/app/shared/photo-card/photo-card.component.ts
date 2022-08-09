@@ -14,10 +14,4 @@ export class PhotoCardComponent {
   @Input() imageUrl?: string;
   @Input() isFavorite = false;
   @Output() selectImage = new EventEmitter();
-
-  click(): void {
-    if (!this.isFavorite) {
-      this.selectImage.emit();
-    }
-  }
 }
