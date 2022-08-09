@@ -42,7 +42,7 @@ describe('PhotosService', () => {
     });
 
     const req = httpMock.expectOne('test-endpoint/random/6');
-    expect(req.request.method).toBe("GET");
+    expect(req.request.method).toBe('GET');
     req.flush(mockResult);
   });
 });

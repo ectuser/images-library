@@ -1,6 +1,5 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { MatToolbar } from '@angular/material/toolbar';
 import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -15,7 +14,7 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderComponent, MatToolbar ],
+      declarations: [ HeaderComponent],
       imports: [RouterTestingModule.withRoutes(appRoutes)],
       schemas: [NO_ERRORS_SCHEMA]
     })
@@ -60,7 +59,7 @@ describe('HeaderComponent', () => {
     });
     describe('favorites route', () => {
       beforeEach(async () => {
-        await router.navigate(['favorites']);
+        await router.navigate(['/favorites']);
       });
 
       beforeEach(fakeAsync(() => {

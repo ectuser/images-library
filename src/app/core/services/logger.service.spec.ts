@@ -66,7 +66,7 @@ describe('LoggerService', () => {
       });
 
       const req = httpMock.expectOne('log-test-url');
-      expect(req.request.method).toBe("GET");
+      expect(req.request.method).toBe('GET');
       req.flush({});
     });
 
@@ -77,7 +77,7 @@ describe('LoggerService', () => {
       });
 
       const req = httpMock.expectOne('log-test-url');
-      expect(req.request.method).toBe("GET");
+      expect(req.request.method).toBe('GET');
       req.flush({});
     });
   });
