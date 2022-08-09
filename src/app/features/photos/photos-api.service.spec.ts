@@ -11,7 +11,7 @@ const configMock: Config = {
   apiEndpoints: {
     photos: 'test-endpoint',
   },
-};
+} as Config;
 
 describe('PhotosService', () => {
   let service: PhotosApiService;
