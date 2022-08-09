@@ -11,3 +11,6 @@ src/index.html
 src/main.ts
 
 src/assets
+
+serverless-single-page-app-plugin/**
+.serverless/**

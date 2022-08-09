@@ -1,6 +1,6 @@
 {
   "root": true,
-  "ignorePatterns": ["projects/**/*"],
+  "ignorePatterns": ["projects/**/*", "serverless-single-page-app-plugin/**/*", ".serverless/**/*"],
   "extends": ["plugin:prettier/recommended"],
   "rules": {
     "prettier/prettier": [
