@@ -1,4 +1,4 @@
-export type ApiEndpoint = 'photos';
+export type ApiEndpoint = 'photos' | 'log';
 export type AppFeature = 'loadPhotos' | 'logging';
 
 export interface Config {
