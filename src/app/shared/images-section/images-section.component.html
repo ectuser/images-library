@@ -1,0 +1,8 @@
+<section class="images">
+  <app-photo-card
+    *ngFor="let photo of photos"
+    [imageUrl]="photo.url"
+    [isFavorite]="photo.isFavorite"
+    (selectImage)="imageClicked.emit(photo.url)"
+  ></app-photo-card>
+</section>

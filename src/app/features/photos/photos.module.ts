@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { PhotosComponent } from './photos/photos.component';
 import { SinglePhotoComponent } from './single-photo/single-photo.component';
 import { MaterialModule } from 'src/app/material.module';
-import { PhotoCardComponent } from './photo-card/photo-card.component';
 import { InfiniteScrollComponent } from '../../shared/infinite-scroll/infinite-scroll.component';
+import { ImagesSectionComponent } from '../../shared/images-section/images-section.component';
 
 @NgModule({
-  declarations: [PhotosComponent, SinglePhotoComponent, PhotoCardComponent],
-  imports: [CommonModule, MaterialModule, InfiniteScrollComponent],
+  declarations: [PhotosComponent, SinglePhotoComponent],
+  imports: [CommonModule, MaterialModule, InfiniteScrollComponent, ImagesSectionComponent],
   exports: [PhotosComponent, SinglePhotoComponent],
 })
 export class PhotosModule {}
