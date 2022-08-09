@@ -9,11 +9,19 @@ class PhotosServiceMock {
   get images$(): Observable<string[]> {
     return of(['first', 'second', 'third'])
   }
+
+  loadImages() {
+    return of(null);
+  }
 }
 
 class FavoritesServiceMock {
   get favorites$(): Observable<string[]> {
     return of(['second', 'third'])
+  }
+
+  addFavorite(url: string): void {
+    jest.fn(() => url);
   }
 }
 
@@ -42,5 +50,21 @@ describe('PhotosComponent', () => {
       expect(val).toEqual([{ url: 'first', isFavorite: false }, { url: 'second', isFavorite: true }, { url: 'third', isFavorite: true }]);
       done();
     });
+  });
+
+  it('should load images', () => {
+    const spy = jest.spyOn(component['photosService'], 'loadImages');
+
+    component.loadImages();
+
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it('should add to favorites', () => {
+    const spy = jest.spyOn(component['favoritesService'], 'addFavorite');
+
+    component.addToFavorites('test');
+
+    expect(spy).toHaveBeenCalled();
   });
 });
