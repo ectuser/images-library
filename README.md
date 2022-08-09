@@ -1,27 +1,48 @@
-# Images
+# Images 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.1.
+A small application to add favorite photos.
 
-## Development server
+## URL: 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- https://d1j2s5fvmr1sey.cloudfront.net 
 
-## Code scaffolding
+## Demo
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+https://user-images.githubusercontent.com/28193050/183779674-433313c9-925c-4839-bb21-9994d605ff5b.mp4
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Links:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- [Board with tasks](https://github.com/users/ectuser/projects/3/views/1)
+- [Repo](https://github.com/ectuser/images-library)
+- [Closed issues](https://github.com/ectuser/images-library/issues?q=is%3Aissue+is%3Aclosed)
+- [Merged PRs](https://github.com/ectuser/images-library/pulls?q=is%3Apr+is%3Aclosed)
 
-## Further help
+## Run app locally
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- install nodejs (v14.19.0 was used)
+- `git clone git@github.com:ectuser/images-library.git`
+- `cd images-library`
+- `npm install`
+- `npm run start`
+- go to http://localhost:4200/
+
+## Used technologies
+
+- Angular 14
+- Angular Material
+- ESLint, Prettier, Husky, lint-staged
+- serverless framework, AWS(S3, CloudFront) for deployment
+
+## Linting, testing
+
+`npm run lint` for linting and `npm run test:coverage` for testing with coverage report
+
+Open `coverage/lcov-report/index.html` for detailed report
+
+Coverage report:
+
+![Screenshot 2022-08-10 014027](https://user-images.githubusercontent.com/28193050/183780070-893ac707-f2f9-47a4-932f-e7150d13ba4b.png)
