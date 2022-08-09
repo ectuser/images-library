@@ -42,3 +42,7 @@ https://user-images.githubusercontent.com/28193050/183779674-433313c9-925c-4839-
 `npm run lint` for linting and `npm run test:coverage` for testing with coverage report
 
 Open `coverage/lcov-report/index.html` for detailed report
+
+Coverage report:
+
+![Screenshot 2022-08-10 014027](https://user-images.githubusercontent.com/28193050/183780070-893ac707-f2f9-47a4-932f-e7150d13ba4b.png)
