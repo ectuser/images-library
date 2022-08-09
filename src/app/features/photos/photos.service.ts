@@ -8,27 +8,27 @@ import { PhotosApiService } from './photos-api.service';
 })
 export class PhotosService {
   private imagesSubject$ = new BehaviorSubject<string[]>([]);
-  private isLoading$ = new BehaviorSubject(false);
+  private isLoadingSubject$ = new BehaviorSubject(false);
 
   get images$(): Observable<string[]> {
     return this.imagesSubject$.asObservable();
   }
 
   get loading$(): Observable<boolean> {
-    return this.isLoading$.asObservable();
+    return this.isLoadingSubject$.asObservable();
   }
 
   constructor(private photosApiService: PhotosApiService) {}
 
   loadImages(): Observable<PhotoResponse> {
-    this.isLoading$.next(true);
+    this.isLoadingSubject$.next(true);
 
     return this.photosApiService.getImages().pipe(
       tap((response) => {
         this.imagesSubject$.next([...this.imagesSubject$.value, ...response.message]);
       }),
       finalize(() => {
-        this.isLoading$.next(false);
+        this.isLoadingSubject$.next(false);
       })
     );
   }

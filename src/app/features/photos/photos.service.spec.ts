@@ -30,10 +30,18 @@ describe('PhotosService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('getter should return value of beh subject', (done) => {
+  it('images getter should return value of images subject', (done) => {
     service['imagesSubject$'] = new BehaviorSubject(['data1', 'data2']);
     service.images$.subscribe((res) => {
       expect(res).toEqual(['data1', 'data2']);
+      done();
+    });
+  });
+
+  it('loading getter should return value of images loading', (done) => {
+    service['isLoadingSubject$'] = new BehaviorSubject(true);
+    service.loading$.subscribe((res) => {
+      expect(res).toEqual(true);
       done();
     });
   });
